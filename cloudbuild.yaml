@@ -1,8 +1,15 @@
+# steps:
+# - id: 'Staging the app using mvn appengine plugin'
+#   name: 'gcr.io/cloud-builders/mvn'
+#   args: ['package', 'appengine:stage']
+# - id: "Deploy to app engine using gcloud image"
+#   name: 'gcr.io/cloud-builders/gcloud'
+#   args: ['app', 'deploy', cloudbuild.yaml']
+# timeout: '1600s'
 steps:
-- id: 'Staging the app using mvn appengine plugin'
+# Builds the application and deploys it to App Engine using Maven.
+- id: 'build_and_deploy'
   name: 'gcr.io/cloud-builders/mvn'
-  args: ['package', 'appengine:stage']
-- id: "Deploy to app engine using gcloud image"
-  name: 'gcr.io/cloud-builders/gcloud'
-  args: ['app', 'deploy', 'codeu-spring-2019-team-9\cloudbuild.yaml']
-timeout: '1600s'
+  args: ['package', 'appengine:deploy']
+  env:
+    - "GOOGLE_CLOUD_PROJECT=team9"
