@@ -17,7 +17,10 @@
 #     - "GOOGLE_CLOUD_PROJECT=team9"
 
 steps:
-- name: 'gcr.io/cloud-builders/mvn'
-  args: ['package']
-- name: 'gcr.io/cloud-builders/gcloud'
-  args: ['app', 'deploy', 'cloudbuild.yaml']
+- id: 'Stage app using mvn appengine plugin on mvn cloud build image'
+  name: 'gcr.io/cloud-builders/mvn'
+  args: ['package', 'appengine:stage']
+- id: "Deploy to app engine using gcloud image"
+  name: 'gcr.io/cloud-builders/gcloud'
+  args: ['app', 'deploy', 'target/appengine-staging/app.yaml']
+timeout: '1600s'
