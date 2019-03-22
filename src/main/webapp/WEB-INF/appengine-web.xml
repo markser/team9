@@ -19,7 +19,7 @@
   <application>impactful-drive-235318</application><!-- unused for Cloud SDK based tooling -->
   <version>1</version>
   <threadsafe>true</threadsafe>
-  <sessions-enabled>true</sessions-enabled>
+  <!-- <sessions-enabled>true</sessions-enabled> -->
   <runtime>java8</runtime>
   <static-files>
     <include path="/**.html" expiration="0" />
