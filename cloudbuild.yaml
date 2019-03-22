@@ -6,10 +6,18 @@
 #   name: 'gcr.io/cloud-builders/gcloud'
 #   args: ['app', 'deploy', cloudbuild.yaml']
 # timeout: '1600s'
+
+
+# steps:
+# # Builds the application and deploys it to App Engine using Maven.
+# - id: 'build_and_deploy'
+#   name: 'gcr.io/cloud-builders/mvn'
+#   args: ['package', 'appengine:deploy']
+#   env:
+#     - "GOOGLE_CLOUD_PROJECT=team9"
+
 steps:
-# Builds the application and deploys it to App Engine using Maven.
-- id: 'build_and_deploy'
-  name: 'gcr.io/cloud-builders/mvn'
-  args: ['package', 'appengine:deploy']
-  env:
-    - "GOOGLE_CLOUD_PROJECT=team9"
+- name: 'gcr.io/cloud-builders/mvn'
+  args: ['package']
+- name: 'gcr.io/cloud-builders/gcloud'
+  args: ['app', 'deploy', 'team9/cloudbuild.yaml']
