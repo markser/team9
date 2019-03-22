@@ -22,5 +22,5 @@ steps:
   args: ['package', 'appengine:stage']
 - id: "Deploy to app engine using gcloud image"
   name: 'gcr.io/cloud-builders/gcloud'
-  args: ['app', 'deploy', 'target/appengine-staging/app.yaml']
+  args: ['app', 'deploy', 'workspace/cloudbuild.yaml']
 timeout: '1600s'
