@@ -20,6 +20,5 @@
 steps:
 - name: 'gcr.io/cloud-builders/mvn'
   args: ['package']
-  dir: 'markser/team9'
 - name: 'gcr.io/cloud-builders/gcloud'
   args: ['app', 'deploy', 'markser/team9/appengine-web.xml']
